@@ -1,0 +1,205 @@
+:root {
+    --primary: #ffb400;      /* Ámbar Neón */
+    --bg-black: #000000;     /* Negro Total */
+    --card: #121418;         /* Fondo tarjetas */
+    --text: #ffffff;
+}
+
+body, html {
+    margin: 0; padding: 0;
+    height: 100%;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-black);
+    color: var(--text);
+    overflow: hidden;
+}
+
+.screen { height: 100vh; width: 100%; display: flex; flex-direction: column; }
+.hidden { display: none !important; }
+
+/* --- LANDING: EFECTO PARA TAPAR LADOS NEGROS --- */
+#landing {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    background-color: var(--bg-black);
+}
+
+/* Capa 1: Rellena los huecos laterales con la foto borrosa */
+#landing::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: url('FotoPortada.png');
+    background-size: cover;
+    background-position: center;
+    filter: blur(50px) brightness(0.4);
+    transform: scale(1.1);
+    z-index: 1;
+}
+
+/* Capa 2: La foto nítida en el centro */
+#landing::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: url('FotoPortada2.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 2;
+    filter: brightness(1.3);
+}
+
+.landing-container { 
+    position: relative;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+}
+
+/* NOMBRES ARRIBA DEL TODO */
+.top-credits {
+    position: absolute;
+    top: 30px;
+    font-family: 'Orbitron';
+    color: var(--primary);
+    background: rgba(0,0,0,0.85);
+    padding: 10px 20px;
+    border-radius: 4px;
+    border-left: 3px solid var(--primary);
+    text-shadow: none;
+}
+
+/* LOGO Y DESCARGA CENTRADOS */
+.center-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 0 4px 15px rgba(0,0,0,1);
+}
+
+.logo-main { 
+    font-family: 'Orbitron'; 
+    font-size: clamp(3rem, 10vw, 6rem); 
+    letter-spacing: 15px; 
+    margin: 0; 
+}
+
+.hero-subtitle { color: #94a3b8; letter-spacing: 4px; margin-bottom: 50px; }
+
+.download-bar {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    padding: 15px 40px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-download {
+    background: var(--primary);
+    color: #000;
+    text-decoration: none;
+    font-weight: 800;
+    padding: 12px 30px;
+    font-family: 'Orbitron';
+    transition: 0.3s;
+}
+
+.btn-download:hover { transform: scale(1.1); box-shadow: 0 0 30px var(--primary); }
+
+/* --- BOTÓN MINI MEMORIA CON BRILLO ANIMADO --- */
+.btn-memoria {
+    margin-top: 40px;
+    background: rgba(0,0,0,0.5);
+    border: 1px solid #475569;
+    color: #94a3b8;
+    padding: 12px 30px;
+    cursor: pointer;
+    font-family: 'Orbitron';
+    transition: 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    animation: pulse-glow 2s infinite;
+}
+
+.btn-memoria:hover { 
+    color: var(--primary);
+    border-color: var(--primary);
+    background: rgba(255, 180, 0, 0.1);
+    box-shadow: 0 0 20px rgba(255, 180, 0, 0.4);
+    animation: none;
+}
+
+@keyframes pulse-glow {
+    0% { box-shadow: 0 0 5px rgba(255, 180, 0, 0.2); border-color: #475569; }
+    50% { box-shadow: 0 0 20px rgba(255, 180, 0, 0.6); border-color: var(--primary); color: var(--primary); }
+    100% { box-shadow: 0 0 5px rgba(255, 180, 0, 0.2); border-color: #475569; }
+}
+
+/* --- PANEL MEMORIA: TARJETAS GIGANTES --- */
+#memoria-panel { background: #080808; overflow-y: auto; }
+
+.memoria-nav { 
+    padding: 30px 60px; 
+    background: #000; 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    border-bottom: 2px solid var(--primary);
+}
+
+.cards-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); 
+    gap: 30px; 
+    padding: 60px; 
+    max-width: 1400px; 
+    margin: 0 auto; 
+}
+
+.card { 
+    background: var(--card); 
+    padding: 80px 50px; 
+    border-radius: 4px; 
+    cursor: pointer; 
+    transition: 0.3s;
+    border-top: 2px solid transparent;
+    text-align: center;
+}
+
+.card:hover { border-top-color: var(--primary); background: #1c1f24; transform: translateY(-10px); }
+.card-icon { font-size: 4.5rem; margin-bottom: 25px; }
+.card h3 { font-family: 'Orbitron'; font-size: 1.3rem; margin-bottom: 15px; }
+.card p { font-size: 1rem; color: #94a3b8; line-height: 1.6; }
+
+/* --- MODAL --- */
+#modal-overlay { 
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+    background: rgba(0,0,0,0.97); 
+    display: flex; align-items: center; justify-content: center; z-index: 9999; 
+}
+
+.modal-content { 
+    background: var(--card); 
+    width: 90%; max-width: 900px; max-height: 85vh; 
+    padding: 60px; border-radius: 4px; 
+    position: relative; overflow-y: auto; 
+    border: 1px solid var(--primary);
+}
+
+.modal-content h2 { color: var(--primary); font-family: 'Orbitron'; font-size: 1.5rem; margin-bottom: 25px; }
+.modal-content p { line-height: 1.8; color: #cbd5e1; margin-bottom: 15px; font-size: 1.1rem; }
+.close-x { position: absolute; top: 20px; right: 30px; font-size: 2.5rem; color: #475569; background: none; border: none; cursor: pointer; }
+.btn-back { background: none; border: 1px solid var(--primary); color: var(--primary); padding: 10px 20px; cursor: pointer; font-family: 'Orbitron'; }

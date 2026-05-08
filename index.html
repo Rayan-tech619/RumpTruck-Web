@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RumpTruck | Rayan & Abdelkader</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <section id="landing" class="screen">
+        <div class="landing-container">
+            <div class="top-credits">
+                <span>Creado por: <strong>Rayan El Maazouzi Raho</strong> & <strong>Abdelkader Hamza Mostefi</strong></span>
+            </div>
+
+            <div class="center-content">
+                <h1 class="logo-main">RumpTruck</h1>
+                <p class="hero-subtitle">Plataformas de Precisión Técnica | Godot Engine 4</p>
+                
+                <div class="download-section">
+                    <div class="download-bar">
+                        <span class="version-tag">Build v1.0 - Stable</span>
+                        <a href="#" class="btn-download">DESCARGAR RUMPTRUCK (.ZIP)</a>
+                    </div>
+                </div>
+
+                <button class="btn-memoria" onclick="showMemoria()">MINI MEMORIA PROYECTO</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="memoria-panel" class="screen hidden">
+        <nav class="memoria-nav">
+            <button class="btn-back" onclick="showLanding()">← VOLVER AL INICIO</button>
+            <h2 class="nav-title">Documentación Técnica Completa</h2>
+        </nav>
+        
+        <div class="container scrollable">
+            <div class="cards-grid">
+                <div class="card" onclick="openModal('modal-intro')">
+                    <div class="card-icon">🎯</div>
+                    <h3>Introducción</h3>
+                    <p>Origen del proyecto y concepto del Escape Room de terror.</p>
+                </div>
+                <div class="card" onclick="openModal('modal-contexto')">
+                    <div class="card-icon">📋</div>
+                    <h3>Contexto y Justificación</h3>
+                    <p>Análisis del sector y relevancia académica en SMX.</p>
+                </div>
+                <div class="card" onclick="openModal('modal-estrategia')">
+                    <div class="card-icon">🧠</div>
+                    <h3>Estrategia y Planificación</h3>
+                    <p>Viabilidad técnica y uso de metodologías Waterfall.</p>
+                </div>
+                <div class="card" onclick="openModal('modal-requisitos')">
+                    <div class="card-icon">⚙️</div>
+                    <h3>Requisitos y Evolución</h3>
+                    <p>Transición del 3D al 2D y problemas de colisiones.</p>
+                </div>
+                <div class="card" onclick="openModal('modal-tecnologia')">
+                    <div class="card-icon">🛠️</div>
+                    <h3>Tecnologías y Estructura</h3>
+                    <p>Godot 4, GDScript y organización por capas Parallax.</p>
+                </div>
+                <div class="card card-special" onclick="openModal('modal-fisicas')">
+                    <div class="card-icon">🏎️</div>
+                    <h3>Físicas y Control</h3>
+                    <p>Programación del RigidBody2D, Boost y Torque.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="modal-overlay" class="hidden" onclick="closeModal()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="close-x" onclick="closeModal()">×</button>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <template id="content-intro">
+        <h2>Introducción</h2>
+        <p>Al principio teníamos nuestras dudas entre muchas ideas de proyectos, entre hacerlo en una página web o hacerlo enfocado a otro género, finalmente nos decidimos en el desarrollo de un Escape Room de terror en formato videojuego para PC, en el que el jugador debe escapar de una mansión mientras es perseguido por un monstruo aterrador que intenta atraparlo. La experiencia combina suspense, tensión y resolución de acertijos, ofreciendo al jugador la sensación de ser el protagonista de una historia de terror en primera persona. El juego está dirigido principalmente a un público joven y adulto interesado en experiencias de terror intensas y desafíos mentales.</p>
+        <p>La metodología incluye el uso de Godot Engine y GDScript aunque tuvimos varias dudas de usar el Roblox Studio en vez del Godot ya que era más eficiente y por ello más fácil, finalmente nos decantamos por la opción que tiene más trabajo. El objetivo principal es crear una actividad de ocio interactiva e inmersiva que ponga a prueba la rapidez, el razonamiento y la capacidad de gestión del estrés del jugador.</p>
+    </template>
+
+    <template id="content-contexto">
+        <h2>Contexto y Justificación</h2>
+        <h3>Contexto</h3>
+        <p>En la actualidad, la industria del videojuego se encuentra en una etapa de gran expansión y evolución tecnológica. El acceso a motores gráficos gratuitos y de código abierto como Godot ha permitido que pequeños equipos e incluso desarrolladores individuales puedan crear videojuegos completos con un nivel técnico y visual profesional.</p>
+        <h3>Justificación</h3>
+        <p>El desenvolupament d’aquest projecte és rellevant tant des del punt de vista acadèmic com tècnic i creatiu. En primer lloc, a nivell acadèmic, permet aplicar de manera pràctica els coneixements adquirits durant el cicle formatiu de Sistemes Microinformàtics i Xarxes. El projecte integra competències com la programació, la planificació de tasques, la gestió de recursos, el control de versions i l’organització del treball en equip.</p>
+    </template>
+
+    <template id="content-estrategia">
+        <h2>Estrategia y Planificación</h2>
+        <p>Se valoraron las siguientes opciones estratégicas: Adaptación de un producto existente o Desarrollo de un producto nuevo (Estrategia elegida). Decidimos crear el videojuego desde una escena vacía, diseñando desde cero la jerarquía de nodos, los scripts de movimiento y el diseño de niveles.</p>
+        <p>Para asegurar el éxito del desarrollo y el cumplimiento de los plazos establecidos, se ha optado por seguir una metodología tradicional en cascada (Waterfall). La herramienta principal para la gestión es el Diagrama de Gantt, fundamental para visualizar la duración de cada tarea y gestionar dependencias técnicas.</p>
+    </template>
+
+    <template id="content-requisitos">
+        <h2>Requisitos y Evolución</h2>
+        <p>Control Físico del Vehículo: El requisito principal es que el jugador sienta el control sobre una máquina. Esto implica interpretar las pulsaciones de teclado para aplicar fuerzas de aceleración y equilibrio aéreo.</p>
+        <p><strong>Evolución del Juego 3D:</strong> Al empezar el proyecto habíamos empezado haciendo un juego 3d, pero a medida que avanzábamos el personaje principal no se movía. Al final, como no entendíamos el error y los profesores dijeron que era mejor un juego 2D, nos decantamos a eso.</p>
+        <p><strong>Retos técnicos:</strong> No pudimos implementar la rampa de bucle ni la pantalla de victoria compleja debido a la dificultad de las físicas en Godot.</p>
+    </template>
+
+    <template id="content-tecnologia">
+        <h2>Tecnologías y Estructura</h2>
+        <p>Elegimos Godot Engine 4 por ser extremadamente ligero y modular. La organización es jerárquica. La escena principal "World" es el contenedor global. El Fondo (Efecto Parallax) consiste en 4 capas diferentes (cielo, nubes, montañas lejanas y siluetas cercanas). Cada capa se mueve a una velocidad distinta respecto al coche, creando una ilusión de profundidad potente.</p>
+    </template>
+
+    <template id="content-fisicas">
+        <h2>Programación Avanzada del Vehículo</h2>
+        <p>Uso del nodo RigidBody2D. El coche se mueve mediante la aplicación de fuerzas vectoriales, impulsos y torques. Masa (20) y Escala de Gravedad (5) para otorgar inercia considerable y evitar el "efecto lunar".</p>
+        <p><strong>Boost y Torque:</strong> Detección de "Doble Tap" en menos de 0.25s. Torque en Suelo (500,000) para estabilidad y Torque en Aire (2,000,000) para piruetas acrobáticas. Función de auto-enderezado masivo (3,500,000) para evitar reinicios innecesarios.</p>
+    </template>
+
+    <script>
+        function showMemoria() {
+            document.getElementById('landing').classList.add('hidden');
+            document.getElementById('memoria-panel').classList.remove('hidden');
+        }
+        function showLanding() {
+            document.getElementById('memoria-panel').classList.add('hidden');
+            document.getElementById('landing').classList.remove('hidden');
+        }
+        function openModal(type) {
+            const templateId = type.replace('modal-', 'content-');
+            const content = document.getElementById(templateId).innerHTML;
+            document.getElementById('modal-body').innerHTML = content;
+            document.getElementById('modal-overlay').classList.remove('hidden');
+        }
+        function closeModal() {
+            document.getElementById('modal-overlay').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
