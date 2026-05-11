@@ -1,7 +1,7 @@
 :root {
-    --primary: #ffb400;      /* Ámbar Neón */
-    --bg-black: #000000;     /* Negro Total */
-    --card: #121418;         /* Fondo tarjetas */
+    --primary: #ffb400;
+    --bg-black: #000000;
+    --card: #121418;
     --text: #ffffff;
 }
 
@@ -17,7 +17,7 @@ body, html {
 .screen { height: 100vh; width: 100%; display: flex; flex-direction: column; }
 .hidden { display: none !important; }
 
-/* --- LANDING: EFECTO PARA TAPAR LADOS NEGROS --- */
+/* --- LANDING --- */
 #landing {
     position: relative;
     display: flex;
@@ -25,10 +25,8 @@ body, html {
     align-items: center;
     text-align: center;
     overflow: hidden;
-    background-color: var(--bg-black);
 }
 
-/* Capa 1: Rellena los huecos laterales con la foto borrosa */
 #landing::before {
     content: "";
     position: absolute;
@@ -41,7 +39,6 @@ body, html {
     z-index: 1;
 }
 
-/* Capa 2: La foto nítida en el centro */
 #landing::after {
     content: "";
     position: absolute;
@@ -65,7 +62,6 @@ body, html {
     z-index: 10;
 }
 
-/* NOMBRES ARRIBA DEL TODO */
 .top-credits {
     position: absolute;
     top: 30px;
@@ -75,10 +71,8 @@ body, html {
     padding: 10px 20px;
     border-radius: 4px;
     border-left: 3px solid var(--primary);
-    text-shadow: none;
 }
 
-/* LOGO Y DESCARGA CENTRADOS */
 .center-content {
     display: flex;
     flex-direction: column;
@@ -87,13 +81,7 @@ body, html {
     text-shadow: 0 4px 15px rgba(0,0,0,1);
 }
 
-.logo-main { 
-    font-family: 'Orbitron'; 
-    font-size: clamp(3rem, 10vw, 6rem); 
-    letter-spacing: 15px; 
-    margin: 0; 
-}
-
+.logo-main { font-family: 'Orbitron'; font-size: clamp(3rem, 10vw, 6rem); letter-spacing: 15px; margin: 0; }
 .hero-subtitle { color: #94a3b8; letter-spacing: 4px; margin-bottom: 50px; }
 
 .download-bar {
@@ -119,7 +107,6 @@ body, html {
 
 .btn-download:hover { transform: scale(1.1); box-shadow: 0 0 30px var(--primary); }
 
-/* --- BOTÓN MINI MEMORIA CON BRILLO ANIMADO --- */
 .btn-memoria {
     margin-top: 40px;
     background: rgba(0,0,0,0.5);
@@ -134,21 +121,13 @@ body, html {
     animation: pulse-glow 2s infinite;
 }
 
-.btn-memoria:hover { 
-    color: var(--primary);
-    border-color: var(--primary);
-    background: rgba(255, 180, 0, 0.1);
-    box-shadow: 0 0 20px rgba(255, 180, 0, 0.4);
-    animation: none;
-}
-
 @keyframes pulse-glow {
     0% { box-shadow: 0 0 5px rgba(255, 180, 0, 0.2); border-color: #475569; }
     50% { box-shadow: 0 0 20px rgba(255, 180, 0, 0.6); border-color: var(--primary); color: var(--primary); }
     100% { box-shadow: 0 0 5px rgba(255, 180, 0, 0.2); border-color: #475569; }
 }
 
-/* --- PANEL MEMORIA: TARJETAS GIGANTES --- */
+/* --- PANEL MEMORIA: ESTO ES LO QUE ARREGLA TU REJILLA --- */
 #memoria-panel { background: #080808; overflow-y: auto; }
 
 .memoria-nav { 
@@ -158,33 +137,58 @@ body, html {
     align-items: center; 
     justify-content: space-between; 
     border-bottom: 2px solid var(--primary);
+    position: sticky; top: 0; z-index: 100;
 }
 
 .cards-grid { 
     display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); 
+    /* Forzamos 3 columnas fijas de igual tamaño */
+    grid-template-columns: repeat(3, 1fr); 
     gap: 30px; 
     padding: 60px; 
     max-width: 1400px; 
     margin: 0 auto; 
+    align-items: center; /* Alineación vertical */
 }
 
 .card { 
     background: var(--card); 
-    padding: 80px 50px; 
+    padding: 60px 40px; 
     border-radius: 4px; 
     cursor: pointer; 
     transition: 0.3s;
     border-top: 2px solid transparent;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .card:hover { border-top-color: var(--primary); background: #1c1f24; transform: translateY(-10px); }
-.card-icon { font-size: 4.5rem; margin-bottom: 25px; }
-.card h3 { font-family: 'Orbitron'; font-size: 1.3rem; margin-bottom: 15px; }
-.card p { font-size: 1rem; color: #94a3b8; line-height: 1.6; }
+.card-icon { font-size: 3.5rem; margin-bottom: 20px; }
+.card h3 { font-family: 'Orbitron'; font-size: 1.1rem; margin-bottom: 15px; }
+.card p { font-size: 0.9rem; color: #94a3b8; line-height: 1.5; }
 
-/* --- MODAL --- */
+/* --- TARJETA DE VIDEO: FORZADA AL CENTRO --- */
+.card-video {
+    /* Esto le dice que se ponga en la fila 2, columna 2 */
+    grid-column: 2;
+    grid-row: 2;
+    border: 2px solid var(--primary) !important;
+    background: linear-gradient(145deg, #121418, #1c1f24) !important;
+    transform: scale(1.15); /* Más grande que el resto */
+    box-shadow: 0 0 30px rgba(255, 180, 0, 0.4);
+    z-index: 10;
+}
+
+.card-video:hover {
+    transform: scale(1.2) translateY(-10px) !important;
+}
+
+.card-video .card-icon { font-size: 5rem; color: var(--primary); }
+.card-video h3 { font-size: 1.4rem; color: var(--primary); }
+
+/* --- MODAL Y VIDEO --- */
 #modal-overlay { 
     position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
     background: rgba(0,0,0,0.97); 
@@ -199,7 +203,22 @@ body, html {
     border: 1px solid var(--primary);
 }
 
-.modal-content h2 { color: var(--primary); font-family: 'Orbitron'; font-size: 1.5rem; margin-bottom: 25px; }
-.modal-content p { line-height: 1.8; color: #cbd5e1; margin-bottom: 15px; font-size: 1.1rem; }
+.video-container {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    border-radius: 8px;
+}
+
 .close-x { position: absolute; top: 20px; right: 30px; font-size: 2.5rem; color: #475569; background: none; border: none; cursor: pointer; }
 .btn-back { background: none; border: 1px solid var(--primary); color: var(--primary); padding: 10px 20px; cursor: pointer; font-family: 'Orbitron'; }
+
+/* Responsive: Para que en móvil no se vea mal */
+@media (max-width: 1000px) {
+    .cards-grid { grid-template-columns: 1fr; }
+    .card-video { grid-column: auto; grid-row: auto; transform: scale(1); }
+}

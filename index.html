@@ -18,14 +18,12 @@
             <div class="center-content">
                 <h1 class="logo-main">RumpTruck</h1>
                 <p class="hero-subtitle">Plataformas de Precisión Técnica | Godot Engine 4</p>
-                
                 <div class="download-section">
                     <div class="download-bar">
                         <span class="version-tag">Build v1.0 - Stable</span>
                         <a href="#" class="btn-download">DESCARGAR RUMPTRUCK (.ZIP)</a>
                     </div>
                 </div>
-
                 <button class="btn-memoria" onclick="showMemoria()">MINI MEMORIA PROYECTO</button>
             </div>
         </div>
@@ -36,7 +34,6 @@
             <button class="btn-back" onclick="showLanding()">← VOLVER AL INICIO</button>
             <h2 class="nav-title">Documentación Técnica Completa</h2>
         </nav>
-        
         <div class="container scrollable">
             <div class="cards-grid">
                 <div class="card" onclick="openModal('modal-intro')">
@@ -54,6 +51,13 @@
                     <h3>Estrategia y Planificación</h3>
                     <p>Viabilidad técnica y uso de metodologías Waterfall.</p>
                 </div>
+
+                <div class="card card-video" onclick="openModal('modal-video')">
+                    <div class="card-icon">🎬</div>
+                    <h3>VIDEO DEL PROYECTO</h3>
+                    <p>Gameplay y demostración de las mecánicas principales.</p>
+                </div>
+
                 <div class="card" onclick="openModal('modal-requisitos')">
                     <div class="card-icon">⚙️</div>
                     <h3>Requisitos y Evolución</h3>
@@ -67,7 +71,7 @@
                 <div class="card card-special" onclick="openModal('modal-fisicas')">
                     <div class="card-icon">🏎️</div>
                     <h3>Físicas y Control</h3>
-                    <p>Programación del RigidBody2D, Boost y Torque.</p>
+                    <p>Programación avanzada del vehículo y motor de colisiones.</p>
                 </div>
             </div>
         </div>
@@ -94,9 +98,16 @@
         <p>El desenvolupament d’aquest projecte és rellevant tant des del punt de vista acadèmic com tècnic i creatiu. En primer lloc, a nivell acadèmic, permet aplicar de manera pràctica els coneixements adquirits durant el cicle formatiu de Sistemes Microinformàtics i Xarxes. El projecte integra competències com la programació, la planificació de tasques, la gestió de recursos, el control de versions i l’organització del treball en equip.</p>
     </template>
 
+    <template id="content-video">
+        <h2>Gameplay RumpTruck</h2>
+        <div class="video-container">
+            <p style="color: var(--primary); border: 2px dashed; padding: 40px;">[ AQUÍ IRÍA EL REPRODUCTOR DE VIDEO ]</p>
+        </div>
+    </template>
+
     <template id="content-estrategia">
         <h2>Estrategia y Planificación</h2>
-        <p>Se valoraron las siguientes opciones estratégicas: Adaptación de un producto existente o Desarrollo de un producto nuevo (Estrategia elegida). Decidimos crear el videojuego desde una escena vacía, diseñando desde cero la jerarquía de nodos, los scripts de movimiento y el diseño de niveles.</p>
+        <p>Se valoraron las siguientes opciones estratégicas: Adaptación de un producto existente o Desarrollo de un producto nuevo (Estrategia elegida). Decidimos crear el videojuego desde una escena vacía, diseñando desde cero la jerarquía de nodos, los scripts de movimiento y el diseño de niveles. Esta es la opción más ambiciosa y la que permite una personalización total de la experiencia.</p>
         <p>Para asegurar el éxito del desarrollo y el cumplimiento de los plazos establecidos, se ha optado por seguir una metodología tradicional en cascada (Waterfall). La herramienta principal para la gestión es el Diagrama de Gantt, fundamental para visualizar la duración de cada tarea y gestionar dependencias técnicas.</p>
     </template>
 
@@ -119,23 +130,10 @@
     </template>
 
     <script>
-        function showMemoria() {
-            document.getElementById('landing').classList.add('hidden');
-            document.getElementById('memoria-panel').classList.remove('hidden');
-        }
-        function showLanding() {
-            document.getElementById('memoria-panel').classList.add('hidden');
-            document.getElementById('landing').classList.remove('hidden');
-        }
-        function openModal(type) {
-            const templateId = type.replace('modal-', 'content-');
-            const content = document.getElementById(templateId).innerHTML;
-            document.getElementById('modal-body').innerHTML = content;
-            document.getElementById('modal-overlay').classList.remove('hidden');
-        }
-        function closeModal() {
-            document.getElementById('modal-overlay').classList.add('hidden');
-        }
+        function showMemoria() { document.getElementById('landing').classList.add('hidden'); document.getElementById('memoria-panel').classList.remove('hidden'); }
+        function showLanding() { document.getElementById('memoria-panel').classList.add('hidden'); document.getElementById('landing').classList.remove('hidden'); }
+        function openModal(type) { const templateId = type.replace('modal-', 'content-'); const content = document.getElementById(templateId).innerHTML; document.getElementById('modal-body').innerHTML = content; document.getElementById('modal-overlay').classList.remove('hidden'); }
+        function closeModal() { document.getElementById('modal-overlay').classList.add('hidden'); }
     </script>
 </body>
 </html>
