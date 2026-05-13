@@ -3,6 +3,7 @@
     --bg-black: #000000;
     --card: #121418;
     --text: #ffffff;
+    --danger: #ff4136; /* Color para el botón jugar */
 }
 
 body, html {
@@ -121,13 +122,47 @@ body, html {
     animation: pulse-glow 2s infinite;
 }
 
+/* --- BOTÓN JUGAR MEJORADO --- */
+.btn-danger {
+    margin-top: 25px;
+    background: linear-gradient(135deg, #ff4136 0%, #85144b 100%);
+    border: none;
+    padding: 0; /* Quitamos padding para que el <a> ocupe todo */
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(255, 65, 54, 0.4);
+    overflow: hidden;
+}
+
+.btn-danger a {
+    display: inline-block;
+    padding: 18px 60px;
+    color: white;
+    text-decoration: none;
+    font-family: 'Orbitron';
+    font-size: 1.2rem;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.btn-danger:hover {
+    transform: scale(1.1) translateY(-3px);
+    box-shadow: 0 0 30px rgba(255, 65, 54, 0.8);
+    filter: brightness(1.2);
+}
+
+.btn-danger:active {
+    transform: scale(0.95);
+}
+
 @keyframes pulse-glow {
     0% { box-shadow: 0 0 5px rgba(255, 180, 0, 0.2); border-color: #475569; }
     50% { box-shadow: 0 0 20px rgba(255, 180, 0, 0.6); border-color: var(--primary); color: var(--primary); }
     100% { box-shadow: 0 0 5px rgba(255, 180, 0, 0.2); border-color: #475569; }
 }
 
-/* --- PANEL MEMORIA: ESTO ES LO QUE ARREGLA TU REJILLA --- */
+/* --- PANEL MEMORIA --- */
 #memoria-panel { background: #080808; overflow-y: auto; }
 
 .memoria-nav { 
@@ -142,13 +177,12 @@ body, html {
 
 .cards-grid { 
     display: grid; 
-    /* Forzamos 3 columnas fijas de igual tamaño */
     grid-template-columns: repeat(3, 1fr); 
     gap: 30px; 
     padding: 60px; 
     max-width: 1400px; 
     margin: 0 auto; 
-    align-items: center; /* Alineación vertical */
+    align-items: center; 
 }
 
 .card { 
@@ -169,14 +203,12 @@ body, html {
 .card h3 { font-family: 'Orbitron'; font-size: 1.1rem; margin-bottom: 15px; }
 .card p { font-size: 0.9rem; color: #94a3b8; line-height: 1.5; }
 
-/* --- TARJETA DE VIDEO: FORZADA AL CENTRO --- */
 .card-video {
-    /* Esto le dice que se ponga en la fila 2, columna 2 */
     grid-column: 2;
     grid-row: 2;
     border: 2px solid var(--primary) !important;
     background: linear-gradient(145deg, #121418, #1c1f24) !important;
-    transform: scale(1.15); /* Más grande que el resto */
+    transform: scale(1.15);
     box-shadow: 0 0 30px rgba(255, 180, 0, 0.4);
     z-index: 10;
 }
@@ -188,7 +220,6 @@ body, html {
 .card-video .card-icon { font-size: 5rem; color: var(--primary); }
 .card-video h3 { font-size: 1.4rem; color: var(--primary); }
 
-/* --- MODAL Y VIDEO --- */
 #modal-overlay { 
     position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
     background: rgba(0,0,0,0.97); 
@@ -217,7 +248,6 @@ body, html {
 .close-x { position: absolute; top: 20px; right: 30px; font-size: 2.5rem; color: #475569; background: none; border: none; cursor: pointer; }
 .btn-back { background: none; border: 1px solid var(--primary); color: var(--primary); padding: 10px 20px; cursor: pointer; font-family: 'Orbitron'; }
 
-/* Responsive: Para que en móvil no se vea mal */
 @media (max-width: 1000px) {
     .cards-grid { grid-template-columns: 1fr; }
     .card-video { grid-column: auto; grid-row: auto; transform: scale(1); }
