@@ -122,12 +122,12 @@ body, html {
     animation: pulse-glow 2s infinite;
 }
 
-/* --- BOTÓN JUGAR MEJORADO --- */
+/* --- BOTÓN JUGAR --- */
 .btn-danger {
     margin-top: 25px;
     background: linear-gradient(135deg, #ff4136 0%, #85144b 100%);
     border: none;
-    padding: 0; /* Quitamos padding para que el <a> ocupe todo */
+    padding: 0; 
     border-radius: 50px;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -150,10 +150,6 @@ body, html {
     transform: scale(1.1) translateY(-3px);
     box-shadow: 0 0 30px rgba(255, 65, 54, 0.8);
     filter: brightness(1.2);
-}
-
-.btn-danger:active {
-    transform: scale(0.95);
 }
 
 @keyframes pulse-glow {
@@ -182,7 +178,6 @@ body, html {
     padding: 60px; 
     max-width: 1400px; 
     margin: 0 auto; 
-    align-items: center; 
 }
 
 .card { 
@@ -196,6 +191,7 @@ body, html {
     display: flex;
     flex-direction: column;
     align-items: center;
+    box-sizing: border-box;
 }
 
 .card:hover { border-top-color: var(--primary); background: #1c1f24; transform: translateY(-10px); }
@@ -203,23 +199,23 @@ body, html {
 .card h3 { font-family: 'Orbitron'; font-size: 1.1rem; margin-bottom: 15px; }
 .card p { font-size: 0.9rem; color: #94a3b8; line-height: 1.5; }
 
+/* --- TARJETA DE VIDEO NORMALIZADA --- */
 .card-video {
-    grid-column: 2;
-    grid-row: 2;
-    border: 2px solid var(--primary) !important;
-    background: linear-gradient(145deg, #121418, #1c1f24) !important;
-    transform: scale(1.15);
-    box-shadow: 0 0 30px rgba(255, 180, 0, 0.4);
-    z-index: 10;
+    /* Quitamos cualquier propiedad que la haga más grande */
+    grid-column: auto; 
+    grid-row: auto;
+    border: 1px solid #d4af37; /* Borde dorado suave */
 }
 
-.card-video:hover {
-    transform: scale(1.2) translateY(-10px) !important;
+.card-video .card-icon { 
+    color: #d4af37; 
 }
 
-.card-video .card-icon { font-size: 5rem; color: var(--primary); }
-.card-video h3 { font-size: 1.4rem; color: var(--primary); }
+.card-video h3 { 
+    color: #d4af37;
+}
 
+/* --- MODAL --- */
 #modal-overlay { 
     position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
     background: rgba(0,0,0,0.97); 
@@ -234,15 +230,18 @@ body, html {
     border: 1px solid var(--primary);
 }
 
-.video-container {
+.video-wrapper {
     width: 100%;
-    aspect-ratio: 16 / 9;
-    background: #000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     margin-top: 20px;
     border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #d4af37;
+    background: #000;
+}
+
+video {
+    display: block;
+    width: 100%;
 }
 
 .close-x { position: absolute; top: 20px; right: 30px; font-size: 2.5rem; color: #475569; background: none; border: none; cursor: pointer; }
@@ -250,5 +249,4 @@ body, html {
 
 @media (max-width: 1000px) {
     .cards-grid { grid-template-columns: 1fr; }
-    .card-video { grid-column: auto; grid-row: auto; transform: scale(1); }
 }
