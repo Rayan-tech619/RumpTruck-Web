@@ -3,7 +3,7 @@
     --bg-black: #000000;
     --card: #121418;
     --text: #ffffff;
-    --danger: #ff4136; /* Color para el botón jugar */
+    --danger: #ff4136;
 }
 
 body, html {
@@ -122,7 +122,7 @@ body, html {
     animation: pulse-glow 2s infinite;
 }
 
-/* --- BOTÓN JUGAR MEJORADO --- */
+/* --- BOTÓN JUGAR (NORMALIZADO) --- */
 .btn-danger {
     margin-top: 25px;
     background: linear-gradient(135deg, #ff4136 0%, #85144b 100%);
@@ -132,41 +132,36 @@ body, html {
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 0 15px rgba(255, 65, 54, 0.4);
-    overflow: hidden;
+    display: inline-block;
 }
 
 .btn-danger a {
-    display: inline-block;
-    padding: 18px 60px;
+    display: block;
+    padding: 15px 45px; /* Tamaño normalizado */
     color: white;
     text-decoration: none;
     font-family: 'Orbitron';
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: bold;
-    letter-spacing: 3px;
+    letter-spacing: 2px;
 }
 
 .btn-danger:hover {
-    transform: scale(1.1) translateY(-3px);
-    box-shadow: 0 0 30px rgba(255, 65, 54, 0.8);
-    filter: brightness(1.2);
-}
-
-.btn-danger:active {
-    transform: scale(0.95);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 20px rgba(255, 65, 54, 0.6);
 }
 
 @keyframes pulse-glow {
-    0% { box-shadow: 0 0 5px rgba(255, 180, 0, 0.2); border-color: #475569; }
-    50% { box-shadow: 0 0 20px rgba(255, 180, 0, 0.6); border-color: var(--primary); color: var(--primary); }
-    100% { box-shadow: 0 0 5px rgba(255, 180, 0, 0.2); border-color: #475569; }
+    0% { box-shadow: 0 0 5px rgba(255, 180, 0, 0.2); }
+    50% { box-shadow: 0 0 20px rgba(255, 180, 0, 0.6); }
+    100% { box-shadow: 0 0 5px rgba(255, 180, 0, 0.2); }
 }
 
 /* --- PANEL MEMORIA --- */
 #memoria-panel { background: #080808; overflow-y: auto; }
 
 .memoria-nav { 
-    padding: 30px 60px; 
+    padding: 20px 60px; 
     background: #000; 
     display: flex; 
     align-items: center; 
@@ -178,104 +173,82 @@ body, html {
 .cards-grid { 
     display: grid; 
     grid-template-columns: repeat(3, 1fr); 
-    gap: 30px; 
-    padding: 60px; 
-    max-width: 1400px; 
+    gap: 25px; 
+    padding: 40px 60px; 
+    max-width: 1200px; 
     margin: 0 auto; 
-    align-items: center; 
 }
 
 .card { 
     background: var(--card); 
-    padding: 60px 40px; 
-    border-radius: 4px; 
+    padding: 40px 30px; 
+    border-radius: 8px; 
     cursor: pointer; 
-    transition: 0.3s;
-    border-top: 2px solid transparent;
+    transition: 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.05);
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.card:hover { border-top-color: var(--primary); background: #1c1f24; transform: translateY(-10px); }
-.card-icon { font-size: 3.5rem; margin-bottom: 20px; }
-.card h3 { font-family: 'Orbitron'; font-size: 1.1rem; margin-bottom: 15px; }
-.card p { font-size: 0.9rem; color: #94a3b8; line-height: 1.5; }
+.card:hover { 
+    border-color: var(--primary); 
+    background: #1c1f24; 
+    transform: translateY(-8px);
+}
 
-/* --- TARJETA DE VIDEO ESTILO NORMALIZADO (ORO/PLATA) --- */
+.card-icon { font-size: 3rem; margin-bottom: 15px; }
+.card h3 { font-family: 'Orbitron'; font-size: 1rem; margin-bottom: 10px; color: var(--primary); }
+.card p { font-size: 0.85rem; color: #94a3b8; line-height: 1.4; margin: 0; }
+
+/* --- TARJETA DE VIDEO (IGUAL A LAS DEMÁS) --- */
 .card-video {
     grid-column: auto !important;
     grid-row: auto !important;
     transform: scale(1) !important;
-    border: 1px solid #d4af37 !important;
-    background: linear-gradient(145deg, #121418, #1a1d22) !important;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5) !important;
-    z-index: 1;
+    border: 1px solid #d4af37 !important; /* Toque dorado */
+    box-shadow: none !important;
 }
 
 .card-video:hover {
-    border-color: #ffb400 !important;
-    box-shadow: 0 0 20px rgba(255, 180, 0, 0.3), inset 0 0 10px rgba(212, 175, 55, 0.1) !important;
-    transform: translateY(-10px) !important;
-    background: linear-gradient(145deg, #1a1d22, #22262c) !important;
+    transform: translateY(-8px) !important;
+    box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2) !important;
 }
 
-.card-video .card-icon { 
-    font-size: 3.5rem !important; 
-    color: #d4af37; 
-    text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
-}
+.card-video .card-icon { color: #d4af37; }
+.card-video h3 { color: #d4af37 !important; }
 
-.card-video h3 { 
-    font-size: 1.1rem !important;
-    background: linear-gradient(90deg, #ffffff, #d4af37);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.card-video p { color: #a0aec0; }
-
-/* --- MODAL Y OTROS --- */
+/* --- MODAL --- */
 #modal-overlay { 
     position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
-    background: rgba(0,0,0,0.97); 
+    background: rgba(0,0,0,0.9); 
     display: flex; align-items: center; justify-content: center; z-index: 9999; 
 }
 
 .modal-content { 
     background: var(--card); 
-    width: 90%; max-width: 900px; max-height: 85vh; 
-    padding: 60px; border-radius: 4px; 
+    width: 90%; max-width: 800px; max-height: 80vh; 
+    padding: 40px; border-radius: 12px; 
     position: relative; overflow-y: auto; 
-    border: 1px solid var(--primary);
+    border: 2px solid var(--primary);
 }
 
-.video-container {
+.video-wrapper {
     width: 100%;
-    aspect-ratio: 16 / 9;
-    background: #000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     margin-top: 20px;
     border-radius: 8px;
     overflow: hidden;
     border: 1px solid #d4af37;
+    background: #000;
 }
 
-.video-container video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
+video { display: block; width: 100%; }
 
-.close-x { position: absolute; top: 20px; right: 30px; font-size: 2.5rem; color: #475569; background: none; border: none; cursor: pointer; }
-.btn-back { background: none; border: 1px solid var(--primary); color: var(--primary); padding: 10px 20px; cursor: pointer; font-family: 'Orbitron'; }
+.close-x { position: absolute; top: 15px; right: 20px; font-size: 2rem; color: #94a3b8; background: none; border: none; cursor: pointer; }
+.btn-back { background: none; border: 1px solid var(--primary); color: var(--primary); padding: 8px 16px; cursor: pointer; font-family: 'Orbitron'; }
 
-.card-special:hover { border-top-color: #ff4136; }
-
-@media (max-width: 1000px) {
-    .cards-grid { grid-template-columns: 1fr; }
-    .card-video { transform: scale(1) !important; }
+@media (max-width: 900px) {
+    .cards-grid { grid-template-columns: 1fr; padding: 20px; }
+    .logo-main { letter-spacing: 5px; }
 }
