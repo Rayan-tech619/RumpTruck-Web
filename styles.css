@@ -122,7 +122,7 @@ body, html {
     animation: pulse-glow 2s infinite;
 }
 
-/* --- BOTÓN JUGAR --- */
+/* --- BOTÓN JUGAR MEJORADO --- */
 .btn-danger {
     margin-top: 25px;
     background: linear-gradient(135deg, #ff4136 0%, #85144b 100%);
@@ -152,6 +152,10 @@ body, html {
     filter: brightness(1.2);
 }
 
+.btn-danger:active {
+    transform: scale(0.95);
+}
+
 @keyframes pulse-glow {
     0% { box-shadow: 0 0 5px rgba(255, 180, 0, 0.2); border-color: #475569; }
     50% { box-shadow: 0 0 20px rgba(255, 180, 0, 0.6); border-color: var(--primary); color: var(--primary); }
@@ -178,6 +182,7 @@ body, html {
     padding: 60px; 
     max-width: 1400px; 
     margin: 0 auto; 
+    align-items: center; 
 }
 
 .card { 
@@ -191,7 +196,6 @@ body, html {
     display: flex;
     flex-direction: column;
     align-items: center;
-    box-sizing: border-box;
 }
 
 .card:hover { border-top-color: var(--primary); background: #1c1f24; transform: translateY(-10px); }
@@ -199,23 +203,40 @@ body, html {
 .card h3 { font-family: 'Orbitron'; font-size: 1.1rem; margin-bottom: 15px; }
 .card p { font-size: 0.9rem; color: #94a3b8; line-height: 1.5; }
 
-/* --- TARJETA DE VIDEO NORMALIZADA --- */
+/* --- TARJETA DE VIDEO ESTILO NORMALIZADO (ORO/PLATA) --- */
 .card-video {
-    /* Quitamos cualquier propiedad que la haga más grande */
-    grid-column: auto; 
-    grid-row: auto;
-    border: 1px solid #d4af37; /* Borde dorado suave */
+    grid-column: auto !important;
+    grid-row: auto !important;
+    transform: scale(1) !important;
+    border: 1px solid #d4af37 !important;
+    background: linear-gradient(145deg, #121418, #1a1d22) !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5) !important;
+    z-index: 1;
+}
+
+.card-video:hover {
+    border-color: #ffb400 !important;
+    box-shadow: 0 0 20px rgba(255, 180, 0, 0.3), inset 0 0 10px rgba(212, 175, 55, 0.1) !important;
+    transform: translateY(-10px) !important;
+    background: linear-gradient(145deg, #1a1d22, #22262c) !important;
 }
 
 .card-video .card-icon { 
+    font-size: 3.5rem !important; 
     color: #d4af37; 
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
 }
 
 .card-video h3 { 
-    color: #d4af37;
+    font-size: 1.1rem !important;
+    background: linear-gradient(90deg, #ffffff, #d4af37);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-/* --- MODAL --- */
+.card-video p { color: #a0aec0; }
+
+/* --- MODAL Y OTROS --- */
 #modal-overlay { 
     position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
     background: rgba(0,0,0,0.97); 
@@ -230,23 +251,31 @@ body, html {
     border: 1px solid var(--primary);
 }
 
-.video-wrapper {
+.video-container {
     width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-top: 20px;
     border-radius: 8px;
     overflow: hidden;
     border: 1px solid #d4af37;
-    background: #000;
 }
 
-video {
-    display: block;
+.video-container video {
     width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .close-x { position: absolute; top: 20px; right: 30px; font-size: 2.5rem; color: #475569; background: none; border: none; cursor: pointer; }
 .btn-back { background: none; border: 1px solid var(--primary); color: var(--primary); padding: 10px 20px; cursor: pointer; font-family: 'Orbitron'; }
 
+.card-special:hover { border-top-color: #ff4136; }
+
 @media (max-width: 1000px) {
     .cards-grid { grid-template-columns: 1fr; }
+    .card-video { transform: scale(1) !important; }
 }
