@@ -122,49 +122,50 @@ body, html {
     animation: pulse-glow 2s infinite;
 }
 
-/* --- BOTÓN JUGAR IMPONENTE (REESCRITO CON SELECTOR MÁXIMO) --- */
-a.btn-danger, .btn-danger {
+/* --- BOTÓN JUGAR TOTALMENTE CORREGIDO --- */
+a.btn-danger, a.btn-danger:visited, a.btn-danger:link {
     margin-top: 35px;
     display: inline-block !important;
     background: linear-gradient(135deg, #ff4136 0%, #a00000 50%, #500000 100%) !important;
-    border: 2px solid rgba(255, 65, 54, 0.7) !important;
-    padding: 22px 80px !important; /* Tamaño gigante y súper equilibrado */
+    border: 2px solid rgba(255, 255, 255, 0.4) !important;
+    padding: 20px 80px !important; /* Tamaño gigante */
     border-radius: 50px !important;
     cursor: pointer !important;
     
-    /* Forzado estricto del color de la fuente */
+    /* Forzado estricto para eliminar el azul y el subrayado */
     color: #ffffff !important; 
-    text-decoration: none !important;
+    text-decoration: none !important; 
     
     font-family: 'Orbitron', sans-serif !important;
-    font-size: 1.7rem !important; /* Letra bien grande y legible */
+    font-size: 2rem !important; /* Letra imponente */
     font-weight: 900 !important;
     letter-spacing: 6px !important;
     text-transform: uppercase !important;
     text-shadow: 0 3px 10px rgba(0,0,0,0.8) !important;
     
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
-    box-shadow: 0 0 20px rgba(255, 65, 54, 0.4), inset 0 0 15px rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 0 0 25px rgba(255, 65, 54, 0.6), inset 0 0 15px rgba(255, 255, 255, 0.2) !important;
     animation: pulse-danger-glow 2.5s infinite !important;
 }
 
-a.btn-danger:hover, .btn-danger:hover {
+a.btn-danger:hover {
     transform: scale(1.08) translateY(-3px) !important;
     background: linear-gradient(135deg, #ff574d 0%, #b80000 100%) !important;
     border-color: #ffffff !important;
-    color: #ffffff !important; /* Mantenemos blanco en el hover */
+    color: #ffffff !important;
+    text-decoration: none !important;
     box-shadow: 0 0 45px rgba(255, 65, 54, 0.95), 0 0 15px rgba(255, 255, 255, 0.7) !important;
 }
 
-a.btn-danger:active, .btn-danger:active {
+a.btn-danger:active {
     transform: scale(0.97) !important;
 }
 
 /* Animaciones de Respiración de Luces */
 @keyframes pulse-danger-glow {
-    0% { box-shadow: 0 0 20px rgba(255, 65, 54, 0.4); }
-    50% { box-shadow: 0 0 38px rgba(255, 65, 54, 0.85); }
-    100% { box-shadow: 0 0 20px rgba(255, 65, 54, 0.4); }
+    0% { box-shadow: 0 0 25px rgba(255, 65, 54, 0.5); }
+    50% { box-shadow: 0 0 45px rgba(255, 65, 54, 0.9); }
+    100% { box-shadow: 0 0 25px rgba(255, 65, 54, 0.5); }
 }
 
 @keyframes pulse-glow {
