@@ -159,7 +159,6 @@
             document.getElementById('modal-overlay').classList.remove('hidden'); 
         }
         function closeModal() { 
-            // Esto detiene el video si se cierra el modal mientras suena
             const video = document.querySelector('#modal-body video');
             if(video) video.pause();
             
