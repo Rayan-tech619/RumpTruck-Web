@@ -122,33 +122,49 @@ body, html {
     animation: pulse-glow 2s infinite;
 }
 
-/* --- BOTÓN JUGAR (NORMALIZADO) --- */
+/* --- BOTÓN JUGAR (OPTIMIZADO, MÁS GRANDE Y ESTÉTICO) --- */
 .btn-danger {
-    margin-top: 25px;
-    background: linear-gradient(135deg, #ff4136 0%, #85144b 100%);
-    border: none;
+    margin-top: 35px;
+    background: linear-gradient(135deg, #ff4136 0%, #a00000 50%, #500000 100%);
+    border: 2px solid rgba(255, 65, 54, 0.6);
     padding: 0; 
     border-radius: 50px;
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 0 15px rgba(255, 65, 54, 0.4);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 0 20px rgba(255, 65, 54, 0.4), inset 0 0 15px rgba(255, 255, 255, 0.1);
     display: inline-block;
+    position: relative;
+    animation: pulse-danger-glow 2.5s infinite;
 }
 
 .btn-danger a {
     display: block;
-    padding: 15px 45px; /* Tamaño normalizado */
+    padding: 22px 65px;
     color: white;
     text-decoration: none;
     font-family: 'Orbitron';
-    font-size: 1.1rem;
-    font-weight: bold;
-    letter-spacing: 2px;
+    font-size: 1.6rem;
+    font-weight: 900;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
 }
 
 .btn-danger:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 20px rgba(255, 65, 54, 0.6);
+    transform: scale(1.08) translateY(-2px);
+    background: linear-gradient(135deg, #ff574d 0%, #b80000 100%);
+    border-color: #ffffff;
+    box-shadow: 0 0 40px rgba(255, 65, 54, 0.9), 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.btn-danger:active {
+    transform: scale(0.98);
+}
+
+@keyframes pulse-danger-glow {
+    0% { box-shadow: 0 0 20px rgba(255, 65, 54, 0.4); }
+    50% { box-shadow: 0 0 35px rgba(255, 65, 54, 0.8); }
+    100% { box-shadow: 0 0 20px rgba(255, 65, 54, 0.4); }
 }
 
 @keyframes pulse-glow {
